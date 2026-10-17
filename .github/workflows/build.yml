@@ -1,0 +1,13 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile
+        run: g++ -std=c++17 -Wall -Wextra -fsanitize=address,undefined -g AVL.cpp -o avl
+      - name: Run
+        run: ./avl
